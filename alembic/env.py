@@ -8,9 +8,10 @@ from alembic import context
 from app.db.base import Base
 from app.models.empresa import Empresa
 from app.models.usuario import Usuario
-from app.models.cliente import Cliente
-from app.models.factura import Factura
-from app.models.abono import Abono
+from app.models.proyecto import Proyecto
+from app.models.historia_usuario import HistoriaUsuario
+from app.models.ticket import Ticket
+
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
