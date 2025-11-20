@@ -28,8 +28,7 @@ class Empresa(Base):
     creada_en = Column(DateTime(timezone=True), server_default=func.now())
     actualizada_en = Column(DateTime(timezone=True), onupdate=func.now())
     
-    # Relación con clientes
-    clientes = relationship("Cliente", back_populates="empresa", cascade="all, delete")
+    # Relación con usuarios y proyectos
     usuarios = relationship("Usuario", back_populates="empresa", cascade="all, delete")
     proyectos = relationship("Proyecto", back_populates="empresa", cascade="all, delete")
 
