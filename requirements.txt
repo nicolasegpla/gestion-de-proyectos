@@ -1,0 +1,11 @@
+fastapi==0.116.1
+uvicorn==0.35.0
+sqlalchemy==2.0.30
+alembic==1.16.5
+pydantic[email]
+pydantic-settings
+
+#autenticacion de usurios
+passlib==1.7.4
+bcrypt==4.1.2
+python-jose==3.3.0
