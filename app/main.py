@@ -8,6 +8,7 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
+        "http://prueba-tecnica-gestion-proyectoss.s3-website-us-east-1.amazonaws.com",
         "http://localhost:5173",     # Para desarrollo local
     ],  # o ["*"] si estás en desarrollo
     allow_credentials=True,
