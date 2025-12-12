@@ -4,6 +4,8 @@ sqlalchemy==2.0.30
 alembic==1.16.5
 pydantic[email]
 pydantic-settings
+psycopg2-binary==2.9.9
+python-dotenv==1.0.1
 
 #autenticacion de usurios
 passlib==1.7.4
