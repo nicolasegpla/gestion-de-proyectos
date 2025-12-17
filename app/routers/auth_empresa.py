@@ -4,7 +4,7 @@ from datetime import timedelta
 from app.db.session import get_db
 from app.services.empresa import autenticar_empresa, crear_empresa
 from app.schemas.empresa import EmpresaCreate, EmpresaLogin, EmpresaResponse
-from app.core.security import create_access_token, ACCESS_TOKEN_EXPIRE_MINUTES
+from app.core.security import create_access_token, ACCESS_TOKEN_EXPIRE_MINUTES, verify_password
 from app.models.empresa import Empresa
 router = APIRouter(prefix="/auth", tags=["Autenticación Empresa"])
 from typing import List
@@ -22,12 +22,18 @@ def registro_empresa(data: EmpresaCreate, db: Session = Depends(get_db)):
 
 @router.post("/login")
 def login_empresa(data: EmpresaLogin, db: Session = Depends(get_db)):
-    empresa = autenticar_empresa(db, data.email_contacto, data.password)
+    #empresa = autenticar_empresa(db, data.email_contacto, data.password)
+    empresa = db.query(Empresa).filter(Empresa.email_contacto == data.email_contacto).first()
+
     if not empresa:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Credenciales inválidas"
-        )
+        raise HTTPException(status_code=404, detail="Empresa no encontrada")
+    
+    if not empresa.activa:
+        raise HTTPException(status_code=403, detail="Empresa inactiva")
+    
+    if not verify_password(data.password, empresa.hashed_password):
+        raise HTTPException(status_code=401, detail="Credenciales incorrectas")
+    
 
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
 

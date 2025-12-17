@@ -80,7 +80,7 @@ def login(data: LoginRequest, db: Session = Depends(get_db)):
 
     # Verificar contraseña
     if not verify_password(data.password, usuario.password_hash):
-        raise HTTPException(status_code=401, detail="Contraseña incorrecta")
+        raise HTTPException(status_code=401, detail="Credenciales incorrecta")
 
     # 🔥 Generar token JWT con type="usuario"
     token_data = {
