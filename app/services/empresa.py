@@ -7,13 +7,13 @@ from app.core.security import hash_password, verify_password
 def crear_empresa(db: Session, data: EmpresaCreate):
     empresa = Empresa(
         nombre=data.nombre,
-        identificacion_tributaria=data.identificacion_tributaria,
+        #identificacion_tributaria=data.identificacion_tributaria,
         email_contacto=data.email_contacto,
         hashed_password=hash_password(data.password),
-        telefono_contacto=data.telefono_contacto,
-        direccion=data.direccion,
-        pais=data.pais,
-        ciudad=data.ciudad,
+        #telefono_contacto=data.telefono_contacto,
+        #direccion=data.direccion,
+        #pais=data.pais,
+        #ciudad=data.ciudad,
     )
     db.add(empresa)
     db.commit()
