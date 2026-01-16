@@ -50,7 +50,9 @@ def login_empresa(data: EmpresaLogin, db: Session = Depends(get_db)):
         "access_token": token,
         "token_type": "bearer",
         "empresa_id": empresa.id,
-        "empresa_nombre": empresa.nombre
+        "empresa_nombre": empresa.nombre,
+        "roll": empresa.roll
+
     }
 
 

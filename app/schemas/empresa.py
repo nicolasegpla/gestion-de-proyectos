@@ -34,6 +34,8 @@ class EmpresaResponse(EmpresaBase):
     creada_en: Optional[datetime] = None
     actualizada_en: Optional[datetime] = None
     tipo_suscripcion: Optional[str] = None
+    roll: Optional[str] = None
+
 
     class Config:
         from_attributes = True
@@ -44,7 +46,8 @@ class EmpresaResponse(EmpresaBase):
                 "email_contacto": "contacto@distrines.com",
                 "activa": True,
                 "fecha_registro": "2025-10-25T10:00:00Z",
-                "tipo_suscripcion": "gratuita",
+                "tipo_suscripcion": "basic",
+                "roll": "superUser"
             }
         }
 
